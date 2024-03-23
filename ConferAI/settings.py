@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
+
+PERPLEXITY_API_KEY = config('PERPLEXITY_API_KEY')
+OPENAI_API_KEY = config('OPENAI_API_KEY')
+CLAUDE_API_KEY = config('CLAUDE_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
