@@ -19,8 +19,10 @@ from django.urls import include
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from app.views import process_string
 
 urlpatterns = [
+    path('process/', process_string, name = 'process_input'),
     path("admin/", admin.site.urls),
     path('app/', include('app.urls')),
     path('', RedirectView.as_view(url='app/', permanent=True)),

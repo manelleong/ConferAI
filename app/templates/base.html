@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %}
-        Django App
-      {% endblock %}
-    </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">My Django App</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container">{% block content %} {% endblock %}</div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
-  </body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>ConferAI</title>
+</head>
+
+<body>
+    <div class="titlebox">
+        <h1 class="title">ConferAI</h1>
+    </div>
+    <div class="container">
+        <div class="answerbox">
+            <p id="output">Answer</p>
+        </div>
+        <form id="myForm" style="width: 50%;">
+            <textarea placeholder="Enter text here..." id="inputData" type="text" rows=1
+                oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea><br><br>
+            <button style="width:10%; height: 30px" type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#myForm").submit(function (event) {
+                event.preventDefault(); // Prevent the form from submitting via the browser
+                $.ajax({
+                    url: '/process/',
+                    type: 'post',
+                    data: {
+                        inputData: $('#inputData').val(),
+                        csrfmiddlewaretoken: '{{ csrf_token }}'  // Ensure CSRF token is sent with POST request
+                    },
+                    success: function (response) {
+                        $("#output").html(response.outputData);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
 </html>
