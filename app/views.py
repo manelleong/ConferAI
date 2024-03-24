@@ -196,7 +196,7 @@ def confer(request):
 
     answers_dict["confer"] = message.content[0].text
 
-    return JsonResponse({'outputData': answers_dict[model_name]})
+    return JsonResponse({'outputData': answers_dict["confer"]})
 
 @require_POST
 @csrf_exempt
