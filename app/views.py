@@ -194,7 +194,7 @@ def confer(request):
     ]
     )
 
-    answers_dict[model_name] = message.content[0].text
+    answers_dict["confer"] = message.content[0].text
 
     return JsonResponse({'outputData': answers_dict[model_name]})
 
@@ -241,7 +241,6 @@ def process_string(request):
         )
 
         answers_dict[model_name] = completion.choices[0].message.content
-
 
     # OpenAI
     def runOpenAI():
