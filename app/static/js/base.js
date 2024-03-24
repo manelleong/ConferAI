@@ -152,6 +152,7 @@ function visible(model) {
         "display": "none",
     });
     output = $('#' + model + 'output');
+    console.log(output);
     output.css({
         "display": "block",
     });

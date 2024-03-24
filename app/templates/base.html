@@ -20,27 +20,29 @@
     <div class="titlebox">
         <h1 id="demo" class="title">AIConference</h1>
     </div>
-    <div class="gridcontainer">
-        <div id="gpt4turbo" class="box" onclick="visible('gpt4turbo')"></div>
-        <div id="gpt4" class="box" onclick="visible('gpt4')"></div>
-        <div id="gpt35turbo" class="box" onclick="visible('gpt35turbo')"></div>
-        <div id="claude3opus" class="box" onclick="visible('claude3opus')"></div>
-        <div id="claude21" class="box" onclick="visible('claude21')"></div>
-        <div id="mistral7b" class="box" onclick="visible('mistral7b')"></div>
-        <div id="mixtral8x7b" class="box" onclick="visible('mixtral8x7b')"></div>
-        <div id="sonarmedium" class="box" onclick="visible('sonarmedium')"></div>
-    </div>
+
     <div class="container">
+
         <div class="answerbox">
             <!-- <p style="display:none" id="output"></p> -->
-            <p id="gpt4turbooutput">Test</p>
-            <!-- <p style="display:none" id="gpt4output"></p>
+            <p style="display:none" id="gpt4turbooutput"></p>
+            <p style="display:none" id="gpt4output"></p>
             <p style="display:none" id="gpt35turbooutput"></p>
             <p style="display:none" id="claude3opusoutput"></p>
             <p style="display:none" id="claude21output"></p>
             <p style="display:none" id="mistral7boutput"></p>
             <p style="display:none" id="mixtral8x7boutput"></p>
-            <p style="display:none" id="sonarmediumoutput"></p> -->
+            <p style="display:none" id="sonarmediumoutput"></p>
+        </div>
+        <div class="gridcontainer">
+            <div id="gpt4turbo" class="box" onclick="visible('gpt4turbo')"></div>
+            <div id="gpt4" class="box" onclick="visible('gpt4')"></div>
+            <div id="gpt35turbo" class="box" onclick="visible('gpt35turbo')"></div>
+            <div id="claude3opus" class="box" onclick="visible('claude3opus')"></div>
+            <div id="claude21" class="box" onclick="visible('claude21')"></div>
+            <div id="mistral7b" class="box" onclick="visible('mistral7b')"></div>
+            <div id="mixtral8x7b" class="box" onclick="visible('mixtral8x7b')"></div>
+            <div id="sonarmedium" class="box" onclick="visible('sonarmedium')"></div>
         </div>
         <form id="myForm">
             <textarea placeholder="Enter text here..." id="inputData" type="text" rows=1
