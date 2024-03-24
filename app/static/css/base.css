@@ -55,7 +55,7 @@ form {
     bottom: 0;
     margin: auto;
     margin-left: 20px;
-    background-color: black;
+    /* background-color: black; */
 }
 
 textarea {
