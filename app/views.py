@@ -10,8 +10,166 @@ import os
 
 # Create your views here.
 
+answers_dict = dict()
+
 def home(request):
     return render(request, "base.html")
+
+@require_POST
+@csrf_exempt
+def gpt4turbo(request):
+    question = request.POST.get('inputData')
+    client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))
+    model_name = "gpt-4-turbo-preview"
+
+    completion = client.chat.completions.create(
+        model = model_name,
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant"},
+            {"role": "user", "content": question}
+        ]
+        )
+
+    answers_dict[model_name] = completion.choices[0].message.content
+
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def gpt4(request):
+    question = request.POST.get('inputData')
+    client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))
+    model_name = "gpt-4"
+
+    completion = client.chat.completions.create(
+        model = model_name,
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant"},
+            {"role": "user", "content": question}
+        ]
+        )
+
+    answers_dict[model_name] = completion.choices[0].message.content
+
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def gpt35turbo(request):
+    question = request.POST.get('inputData')
+    client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))
+    model_name = "gpt-3.5-turbo"
+
+    completion = client.chat.completions.create(
+        model = model_name,
+        messages = [
+            {"role": "system", "content": "You are a helpful assistant"},
+            {"role": "user", "content": question}
+        ]
+        )
+
+    answers_dict[model_name] = completion.choices[0].message.content
+
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def claude3opus(request):
+    question = request.POST.get('inputData')
+    client = anthropic.Anthropic(api_key = os.getenv('CLAUDE_API_KEY'))
+    model_name = "claude-3-opus-20240229"
+
+    message = client.messages.create(
+        model = model_name,
+        max_tokens = 4096,
+        temperature = 0.0,
+        system = "You are a helpful assistant. Sometimes you consider the input of other AI's to help you find the best answer.",
+        messages = [
+            {"role": "user", "content": question}
+    ]
+    )
+
+    answers_dict[model_name] = message.content[0].text
+
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def claude21(request):
+    question = request.POST.get('inputData')
+    client = anthropic.Anthropic(api_key = os.getenv('CLAUDE_API_KEY'))
+    model_name = "claude-2.1"
+
+    message = client.messages.create(
+        model = model_name,
+        max_tokens = 4096,
+        temperature = 0.0,
+        system = "You are a helpful assistant.",
+        messages = [
+            {"role": "user", "content": question}
+    ]
+    )
+
+    answers_dict[model_name] = message.content[0].text
+
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def mistral7b(request):
+    question = request.POST.get('inputData')
+    client = OpenAI(api_key=os.getenv('PERPLEXITY_API_KEY'), base_url="https://api.perplexity.ai")
+    model_name = "mistral-7b-instruct"
+
+    completion = client.chat.completions.create(
+    model = model_name,
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant"},
+        {"role": "user", "content": question}
+    ]
+    )
+
+    answers_dict[model_name] = completion.choices[0].message.content
+
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def mixtral8x7b(request):
+    question = request.POST.get('inputData')
+    client = OpenAI(api_key=os.getenv('PERPLEXITY_API_KEY'), base_url="https://api.perplexity.ai")
+    model_name = "mixtral-8x7b-instruct"
+
+    completion = client.chat.completions.create(
+    model = model_name,
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant"},
+        {"role": "user", "content": question}
+    ]
+    )
+
+    answers_dict[model_name] = completion.choices[0].message.content
+    
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def sonarmedium(request):
+    question = request.POST.get('inputData')
+    client = OpenAI(api_key=os.getenv('PERPLEXITY_API_KEY'), base_url="https://api.perplexity.ai")
+    model_name = "sonar-medium-chat"
+
+    completion = client.chat.completions.create(
+    model = model_name,
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant"},
+        {"role": "user", "content": question}
+    ]
+    )
+
+    answers_dict[model_name] = completion.choices[0].message.content
+    
+    return JsonResponse({'outputData': answers_dict[model_name]})
 
 @require_POST
 @csrf_exempt
@@ -57,8 +215,6 @@ def process_string(request):
 
         answers_dict[model_name] = completion.choices[0].message.content
 
-
-    answers_dict = dict()
 
     # OpenAI
     def runOpenAI():
