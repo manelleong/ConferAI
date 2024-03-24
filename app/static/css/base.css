@@ -25,7 +25,7 @@ body {
 
 .container {
     /* display: flex; */
-    width: 75%;
+    width: 60%;
     flex-direction: column;
     justify-content: center;
     /* Center horizontally */
@@ -37,9 +37,10 @@ body {
 }
 
 .answerbox {
-    width: 70%;
+    width: 100%;
     height: 70vh;
     margin: auto;
+    margin-left: 20px;
     margin-top: 50px;
     /* display: none; */
     /* background-color: black; */
@@ -113,5 +114,17 @@ button:active {
     width: 8vw;
     height: 8vw;
     background-color: red;
+    color: white;
     z-index: 100;
+}
+
+.textcontainer {
+    display: none;
+    width: 100%;
+    height: 30vh;
+    background-color: #723FCC;
+    padding: 10px;
+    border-radius: 15px;
+    color: white;
+    overflow-y: auto;
 }

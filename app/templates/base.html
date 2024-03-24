@@ -25,24 +25,29 @@
 
         <div class="answerbox">
             <!-- <p style="display:none" id="output"></p> -->
-            <p style="display:none" id="gpt4turbooutput"></p>
-            <p style="display:none" id="gpt4output"></p>
-            <p style="display:none" id="gpt35turbooutput"></p>
-            <p style="display:none" id="claude3opusoutput"></p>
-            <p style="display:none" id="claude21output"></p>
-            <p style="display:none" id="mistral7boutput"></p>
-            <p style="display:none" id="mixtral8x7boutput"></p>
-            <p style="display:none" id="sonarmediumoutput"></p>
+            <div id="box1" class="textcontainer">
+                <p id="finaloutput"></p>
+            </div>
+            <div id="box2" class="textcontainer" style="margin-top: 40px;">
+                <p style="display:none" id="gpt4turbooutput"></p>
+                <p style="display:none" id="gpt4output"></p>
+                <p style="display:none" id="gpt35turbooutput"></p>
+                <p style="display:none" id="claude3opusoutput"></p>
+                <p style="display:none" id="claude21output"></p>
+                <p style="display:none" id="mistral7boutput"></p>
+                <p style="display:none" id="mixtral8x7boutput"></p>
+                <p style="display:none" id="sonarmediumoutput"></p>
+            </div>
         </div>
         <div class="gridcontainer">
-            <div id="gpt4turbo" class="box" onclick="visible('gpt4turbo')"></div>
-            <div id="gpt4" class="box" onclick="visible('gpt4')"></div>
-            <div id="gpt35turbo" class="box" onclick="visible('gpt35turbo')"></div>
-            <div id="claude3opus" class="box" onclick="visible('claude3opus')"></div>
-            <div id="claude21" class="box" onclick="visible('claude21')"></div>
-            <div id="mistral7b" class="box" onclick="visible('mistral7b')"></div>
-            <div id="mixtral8x7b" class="box" onclick="visible('mixtral8x7b')"></div>
-            <div id="sonarmedium" class="box" onclick="visible('sonarmedium')"></div>
+            <div id="gpt4turbo" class="box" onclick="visible('gpt4turbo')">Gpt 4 Turbo</div>
+            <div id="gpt4" class="box" onclick="visible('gpt4')">Gpt 4</div>
+            <div id="gpt35turbo" class="box" onclick="visible('gpt35turbo')">Gpt 3.5 Turbo</div>
+            <div id="claude3opus" class="box" onclick="visible('claude3opus')">Claude 3 Opus</div>
+            <div id="claude21" class="box" onclick="visible('claude21')">Claude 2.1</div>
+            <div id="mistral7b" class="box" onclick="visible('mistral7b')">Mistral 7b</div>
+            <div id="mixtral8x7b" class="box" onclick="visible('mixtral8x7b')">Mixtral 8x7b</div>
+            <div id="sonarmedium" class="box" onclick="visible('sonarmedium')">Sonar Medium</div>
         </div>
         <form id="myForm">
             <textarea placeholder="Enter text here..." id="inputData" type="text" rows=1
