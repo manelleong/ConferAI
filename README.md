@@ -13,3 +13,7 @@ If you wish to host this site yourself, in the root directory you will need an a
 PERPLEXITY_API_KEY = "apikeyhere"
 OPENAI_API_KEY = "apikeyhere"
 CLAUDE_API_KEY = "apikeyhere"
+
+After ".env" is correctly added, type "python manage.py runserver" into the terminal to run the Django project locally (localhost:8000).  
+
+You may need to pip install any of the python packages you are missing.
