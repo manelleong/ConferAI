@@ -35,6 +35,8 @@ urlpatterns = [
     path('mistral7b/', mistral7b, name = 'mistral7b'),
     path('mixtral8x7b/', mixtral8x7b, name = 'mixtral8x7b'),
     path('sonarmedium/', sonarmedium, name = 'sonarmedium'),
-    
+
+    path('confer/', confer, name = 'confer')
+
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

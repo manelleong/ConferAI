@@ -83,7 +83,7 @@ def claude3opus(request):
         model = model_name,
         max_tokens = 4096,
         temperature = 0.0,
-        system = "You are a helpful assistant. Sometimes you consider the input of other AI's to help you find the best answer.",
+        system = "You are a helpful assistant.",
         messages = [
             {"role": "user", "content": question}
     ]
@@ -169,6 +169,33 @@ def sonarmedium(request):
 
     answers_dict[model_name] = completion.choices[0].message.content
     
+    return JsonResponse({'outputData': answers_dict[model_name]})
+
+@require_POST
+@csrf_exempt
+def confer(request):
+    question = request.POST.get('inputData')
+    client = anthropic.Anthropic(api_key = os.getenv('CLAUDE_API_KEY'))
+    model_name = "claude-3-opus-20240229"
+
+    final_question = "I want you to consider the next few responses from various other AI. The responses are not necessarily correct or incorrect; it is up to you whether they influence your next answer or not.\n"
+    for key, value in answers_dict.items():
+        final_question += f"{key} wrote this answer: \n {value}"
+
+    final_question += f"Having seen these other responses (including your own), I want you to answer this question: {question}.  You may allow the other AI's to influence your answer if you think it is an improvement, but you are not obliged to do so."
+
+    message = client.messages.create(
+        model = model_name,
+        max_tokens = 4096,
+        temperature = 0.0,
+        system = "You are a helpful assistant. You can consider the input of other AI's to help you find the best answer.",
+        messages = [
+            {"role": "user", "content": final_question}
+    ]
+    )
+
+    answers_dict[model_name] = message.content[0].text
+
     return JsonResponse({'outputData': answers_dict[model_name]})
 
 @require_POST
