@@ -149,6 +149,31 @@ function moveFormToBottom() {
     // $("#final").css({
     //     "background-color": "red",
     // });
+    $("#finaloutput").html('');
+    $("#gpt4turbooutput").css({
+        "display": "none",
+    });
+    $("#gpt4output").css({
+        "display": "none",
+    });
+    $("#gpt35turbooutput").css({
+        "display": "none",
+    });
+    $("#claude3opusoutput").css({
+        "display": "none",
+    });
+    $("#claude21output").css({
+        "display": "none",
+    });
+    $("#mistral7boutput").css({
+        "display": "none",
+    });
+    $("#mixtral8x7boutput").css({
+        "display": "none",
+    });
+    $("#sonarmediumoutput").css({
+        "display": "none",
+    });
     $("#box1").css({
         "display": "block",
     });
