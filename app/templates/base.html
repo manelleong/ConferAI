@@ -12,41 +12,24 @@
         rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>ConferAI</title>
+    <script src="{% static 'js/base.js' %}"></script>
+    <title>AIConference</title>
 </head>
 
 <body>
     <div class="titlebox">
-        <h1 class="title">ConferAI</h1>
+        <h1 class="title">AIConference</h1>
     </div>
     <div class="container">
         <div class="answerbox">
-            <p id="output">Answer</p>
+            <p id="output"></p>
         </div>
-        <form id="myForm" style="width: 50%;">
+        <form id="myForm">
             <textarea placeholder="Enter text here..." id="inputData" type="text" rows=1
-                oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea><br><br>
-            <button style="width:10%; height: 30px" type="submit">Submit</button>
+                oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'"></textarea>
+            <button onclick="moveFormToBottom()" type="submit">Submit</button>
         </form>
     </div>
-    <script>
-        $(document).ready(function () {
-            $("#myForm").submit(function (event) {
-                event.preventDefault(); // Prevent the form from submitting via the browser
-                $.ajax({
-                    url: '/process/',
-                    type: 'post',
-                    data: {
-                        inputData: $('#inputData').val(),
-                        csrfmiddlewaretoken: '{{ csrf_token }}'  // Ensure CSRF token is sent with POST request
-                    },
-                    success: function (response) {
-                        $("#output").html(response.outputData);
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

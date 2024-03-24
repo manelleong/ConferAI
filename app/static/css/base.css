@@ -24,7 +24,8 @@ body {
 }
 
 .container {
-    display: flex;
+    /* display: flex; */
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     /* Center horizontally */
@@ -35,17 +36,32 @@ body {
 }
 
 .answerbox {
-    width: 80%;
-    height: 50vh;
+    width: 70%;
+    height: 70vh;
+    margin: auto;
+    margin-top: 50px;
     /* display: none; */
-    /* background-color: black; */
+}
+
+form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 textarea {
-    width: 50%;
+    width: 70%;
     /* min-height: 30px; */
     max-height: 200px;
     padding: 10px;
+    padding-right: 6%;
     box-sizing: border-box;
     border-radius: 25px;
     border: 2px solid #723FCC;
@@ -54,4 +70,25 @@ textarea {
     /* overflow-y: hidden; */
     resize: none;
     position: absolute;
+}
+
+button {
+    width: 10%;
+    height: 30px;
+    position: relative;
+    margin-left: 58%;
+    background-color: #723FCC;
+    border: 2px solid #723FCC;
+    border-radius: 25px;
+    color: white;
+}
+
+button:hover {
+    background-color: white;
+    color: #723FCC;
+}
+
+button:active {
+    background-color: white;
+    border-color: #eee
 }
