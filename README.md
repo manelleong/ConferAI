@@ -6,7 +6,7 @@ After each AI has returned an answer, we ask Claude 3 if it wishes to change its
 
 Every AI has its strengths and weaknesses; letting them confer helps to fill the gaps.
 
-We made use of the Perplexity, OpenAI, and Anthropic api's for AI's of this project.
+We made use of the Perplexity, OpenAI, and Anthropic api's for the AI's of this project.
 
 If you wish to host this site yourself, in the root directory you will need an additional file ".env" with the following 3 variables:
 
